@@ -4,6 +4,6 @@ import App      from './components/App';
 import './css/index.css';
 
 ReactDOM.render(
-  <App title = "HappyDrink"/>,
+  <App title="HappyDrink"/>,
   document.getElementById('root')
 );
