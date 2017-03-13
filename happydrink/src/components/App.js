@@ -3,7 +3,7 @@ import logo                 from '../assets/logo.svg'
 import '../css/App.css'
 
 import { establishments }    from './establishments/fixtures'
-import Establishment         from './establishments/establishment'
+import Establishment         from './establishments/establishments'
 
 class App extends Component {
   constructor(props) {
@@ -18,6 +18,14 @@ class App extends Component {
     }
 
 }
+
+    componentWillMount () {
+        console.log("componentWillMount")
+    }
+
+    componentDidMount () {
+        console.log("componentDidMount")
+    }
 
 // On définit la fonction appelée lors d'un clic sur le lien "Changer le pseudo !"
 // la syntaxe  " nomFonction = () => {} " nous permet de conserver le contexte `this` du scope courant. (Ici, la classe App)
@@ -39,6 +47,7 @@ randomPseudo = () => {
 }
 
   render() {
+    console.log("render")
     const listEstablishment = establishments.map( (establishment) => {
             return (
                 <Establishment
