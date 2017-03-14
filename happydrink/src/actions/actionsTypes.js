@@ -6,3 +6,6 @@ export const FAVORI         = "FAVORI"
 // App
 export const SETDATAFROMAPI = "SETDATAFROMAPI"
 export const SETPSEUDO      = "SETPSEUDO"
+
+// filtre
+export const FILTER         = "FILTER"

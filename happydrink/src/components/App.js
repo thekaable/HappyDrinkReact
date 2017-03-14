@@ -11,15 +11,23 @@ class App extends Component {
         this.props.getDataFromApi()
     }
 
+    handleChange = (e) => {
+        this.props.filter(e.target.value)
+    }
+
     render() {
 
-        const listEstablishment = this.props.state.establishments.map( establishment => {
+      // On filtre
+        const establishmentFilter = this.props.state.establishments.filter(e => e.visible )
+
+        const listEstablishment = establishmentFilter.map( establishment => {
             return (
-                <EstablishmentContainer
-                    key={ establishment.id }
-                    establishment={ establishment }
-                />
-            )
+                    <EstablishmentContainer
+                        key={ establishment.id }
+                        establishment={ establishment }
+                    />
+                )
+
         })
 
         return (
@@ -35,6 +43,15 @@ class App extends Component {
                 <div className="App-intro">
 
                     <p> <a onClick={ this.props.randomPseudo } >Changer le pseudo !</a> </p>
+
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="search"
+                            value={this.props.state.app.textFilter}
+                            onChange={this.handleChange}
+                        />
+                    </div>
 
                     <section>
                         { listEstablishment }

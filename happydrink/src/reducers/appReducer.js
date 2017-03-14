@@ -1,13 +1,29 @@
+import { REHYDRATE } from 'redux-persist/constants'
+
 import * as types from '../actions/actionsTypes'
 
 const initialState = {
     dataFromAPI : "",
-    pseudo      : "Inconnu"
+    pseudo      : "Inconnu",
+    textFilter  : ""
 }
 
 const appReducer = (state = initialState, action) => {
 
     switch (action.type) {
+
+      case REHYDRATE:
+
+      var incoming = action.payload.app
+
+      if (incoming)
+        return {
+            ...state,
+            ...incoming,
+            textFilter : ""
+        }
+
+      return state
 
         case types.SETDATAFROMAPI :
 
@@ -21,6 +37,12 @@ const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 pseudo : action.data.pseudo
+            }
+
+        case types.FILTER :
+            return {
+                ...state,
+                textFilter : action.data.text
             }
 
         default:
